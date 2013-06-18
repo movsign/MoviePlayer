@@ -88,7 +88,7 @@ public class MainActivity extends Activity {
 							.getColumnIndexOrThrow(MediaStore.Video.Media._ID));
 					Bitmap bitmap = MediaStore.Video.Thumbnails.getThumbnail(
 							getContentResolver(), id,
-							MediaStore.Video.Thumbnails.MICRO_KIND, null);
+							MediaStore.Video.Thumbnails.MINI_KIND, null);
 					iv.setImageBitmap(bitmap);
 					Uri movieUri = ContentUris.withAppendedId(CONTENT_URI, id);
 					iv.setTag(movieUri);
