@@ -1,11 +1,14 @@
 package jp.pizzafactory.signage.movieplayer;
 
+import java.util.Calendar;
+
 import android.app.Activity;
 import android.app.LoaderManager;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.ContentUris;
 import android.content.CursorLoader;
 import android.content.Loader;
+import android.content.SharedPreferences;
 import android.database.ContentObserver;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -15,6 +18,7 @@ import android.media.MediaPlayer.OnPreparedListener;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.view.View;
 import android.view.Window;
@@ -116,14 +120,44 @@ public class MainActivity extends Activity {
 		setNextVideo();
 	}
 
+	private int[] hoursTable = new int[] { R.string.enable0, R.string.enable1,
+			R.string.enable2, R.string.enable3, R.string.enable4,
+			R.string.enable5, R.string.enable6, R.string.enable7,
+			R.string.enable8, R.string.enable9, R.string.enable10,
+			R.string.enable11, R.string.enable12, R.string.enable13,
+			R.string.enable14, R.string.enable15, R.string.enable16,
+			R.string.enable17, R.string.enable18, R.string.enable19,
+			R.string.enable20, R.string.enable21, R.string.enable22,
+			R.string.enable23 };
+
 	private void setNextVideo() {
-		final int position = (int) (Math.random() * thumbnailList.getCount());
-		new Handler().postDelayed(new Runnable() {
-			public void run() {
-				thumbnailList.smoothScrollToPosition(position);
-				playNextVideo(position);
-			}
-		}, 3000);
+		final SharedPreferences sp = PreferenceManager
+				.getDefaultSharedPreferences(this);
+		Calendar calendar = Calendar.getInstance();
+		String idString = getString(hoursTable[calendar
+				.get(Calendar.HOUR_OF_DAY)]);
+		int visibility = sp.getBoolean(idString, true) ? View.VISIBLE
+				: View.INVISIBLE;
+
+		findViewById(R.id.thumbnailList).setVisibility(visibility);
+		findViewById(R.id.videoView).setVisibility(visibility);
+		if (visibility == View.INVISIBLE) {
+			new Handler().postDelayed(new Runnable() {
+
+				@Override
+				public void run() {
+					setNextVideo();
+				}
+			}, 60000);
+		} else {
+			final int position = (int) (Math.random() * thumbnailList.getCount());
+			new Handler().postDelayed(new Runnable() {
+				public void run() {
+					thumbnailList.smoothScrollToPosition(position);
+					playNextVideo(position);
+				}
+			}, 3000);
+		}
 	}
 
 	private void playNextVideo(int position) {

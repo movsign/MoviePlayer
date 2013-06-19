@@ -33,7 +33,13 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+
+            <meta-data
+                android:name="android.service.dream"
+                android:resource="@xml/dream_preference" />
         </service>
+
+        <activity android:name=".DreamSettingActivity" />
     </application>
 
 </manifest>
