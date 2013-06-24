@@ -1,9 +1,32 @@
 <resources>
 
-    <string name="app_name">MoviePlayer</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="menu_settings">Settings</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="app_name">Movsign MoviePlayer</string>
+    <string name="title_activity_main">MoviePlayer</string>
     <string name="thumbnail">Thumbnail</string>
+	<string name="menu_settings">Settings</string>
 
+    <string name="enable0">enable0</string>
+    <string name="enable1">enable1</string>
+    <string name="enable2">enable2</string>
+    <string name="enable3">enable3</string>
+    <string name="enable4">enable4</string>
+    <string name="enable5">enable5</string>
+    <string name="enable6">enable6</string>
+    <string name="enable7">enable7</string>
+    <string name="enable8">enable8</string>
+    <string name="enable9">enable9</string>
+    <string name="enable10">enable10</string>
+    <string name="enable11">enable11</string>
+    <string name="enable12">enable12</string>
+    <string name="enable13">enable13</string>
+    <string name="enable14">enable14</string>
+    <string name="enable15">enable15</string>
+    <string name="enable16">enable16</string>
+    <string name="enable17">enable17</string>
+    <string name="enable18">enable18</string>
+    <string name="enable19">enable19</string>
+    <string name="enable20">enable20</string>
+    <string name="enable21">enable21</string>
+    <string name="enable22">enable22</string>
+    <string name="enable23">enable23</string>
 </resources>
