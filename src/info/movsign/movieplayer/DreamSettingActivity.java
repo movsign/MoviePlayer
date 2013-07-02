@@ -1,4 +1,4 @@
-package jp.pizzafactory.signage.movieplayer;
+package info.movsign.movieplayer;
 
 import android.app.FragmentTransaction;
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package jp.pizzafactory.signage.movieplayer;
+package info.movsign.movieplayer;
 
 import java.util.Calendar;
 
