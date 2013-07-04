@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="jp.pizzafactory.signage.movieplayer"
-    android:versionCode="2"
-    android:versionName="1.0.2" >
+    package="info.movsign.movieplayer"
+    android:versionCode="3"
+    android:versionName="1.1.0" >
 
     <uses-sdk
         android:minSdkVersion="17"
@@ -15,6 +15,7 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
+            android:launchMode="singleInstance"
             android:screenOrientation="landscape" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,24 +23,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <service
-            android:name="MoviePlayerDream"
-            android:exported="false"
-            android:icon="@drawable/ic_launcher"
-            android:label="@string/app_name" >
+        <activity
+            android:name=".ClosingActivity"
+            android:launchMode="singleInstance" >
             <intent-filter>
-                <action android:name="android.service.dreams.DreamService" />
-
-                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="android.intent.action.MAIN" />
             </intent-filter>
-
-            <meta-data
-                android:name="android.service.dream"
-                android:resource="@xml/dream_preference" />
-        </service>
-
-        <activity android:name=".DreamSettingActivity" />
+        </activity>
     </application>
 
 </manifest>
