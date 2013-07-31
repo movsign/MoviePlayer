@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="@string/title_preference" >
+        <EditTextPreference
+            android:dialogTitle="@string/marqueetext_dialogtitle"
+            android:key="marqueetext_key"
+            android:summary="@string/marqueetext_summary"
+            android:title="@string/marquieetext_title" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
