@@ -3,25 +3,50 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
-    android:gravity="center" >
+    android:baselineAligned="false"
+    android:gravity="center_horizontal" >
 
-        <ListView
-            android:id="@+id/thumbnailList"
-            android:layout_width="400dp"
+    <ListView
+        android:id="@+id/thumbnailList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="4"
+        android:background="@color/list_item"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:listSelector="@android:color/darker_gray"
+        android:longClickable="false" >
+    </ListView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <VideoView
+            android:id="@+id/videoView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:longClickable="false" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/list_item"
-            android:clickable="true"
+            android:ellipsize="marquee"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            android:listSelector="@android:color/darker_gray" >
-
-        </ListView>
-
-    <VideoView
-        android:id="@+id/videoView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
+            android:gravity="left|bottom"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:singleLine="true"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
+    </LinearLayout>
 
 </LinearLayout>
