@@ -7,6 +7,7 @@ import android.content.ContentUris;
 import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
 import android.database.ContentObserver;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -16,6 +17,7 @@ import android.media.MediaPlayer.OnPreparedListener;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.view.View;
 import android.view.Window;
@@ -26,6 +28,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.SimpleCursorAdapter.ViewBinder;
+import android.widget.TextView;
 import android.widget.VideoView;
 
 public class MainActivity extends Activity {
@@ -59,6 +62,10 @@ public class MainActivity extends Activity {
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_main);
+
+		TextView textView = (TextView) findViewById(R.id.textView1);
+		textView.setText(getMarqueeText());
+		textView.requestFocus();
 
 		videoView = (VideoView) findViewById(R.id.videoView);
 
@@ -171,4 +178,9 @@ public class MainActivity extends Activity {
 			adapter.swapCursor(null);
 		}
 	};
+
+	private String getMarqueeText() {
+		SharedPreferences pm = PreferenceManager.getDefaultSharedPreferences(this);
+		return pm.getString("marqueetext_key", "");
+	}
 }

@@ -4,5 +4,9 @@
     <string name="title_activity_main">MoviePlayer</string>
     <string name="thumbnail">Thumbnail</string>
     <string name="menu_settings">Settings</string>
+    <string name="marqueetext_dialogtitle">Marquee Text</string>
+    <string name="title_preference">MoviePlayer Preference</string>
+    <string name="marqueetext_summary">Marquee text displayed on the bottom of display area</string>
+    <string name="marquieetext_title">Marquee text</string>
 
 </resources>
