@@ -12,6 +12,11 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        <provider
+            android:name="TouchCountProvider"
+            android:authorities="info.movsign.movieplayer.touchcountprovider"
+            android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
