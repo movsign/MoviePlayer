@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.LoaderManager;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.ContentUris;
+import android.content.ContentValues;
 import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
@@ -124,7 +125,7 @@ public class MainActivity extends Activity {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
 				thumbnailList.setSelection(position);
-				playNextVideo(position);
+				playNextVideo(position, true);
 			}
 		});
 		LoaderManager lm = getLoaderManager();
@@ -138,19 +139,31 @@ public class MainActivity extends Activity {
 		new Handler().postDelayed(new Runnable() {
 			public void run() {
 				thumbnailList.smoothScrollToPosition(position);
-				playNextVideo(position);
+				playNextVideo(position, false);
 			}
 		}, 3000);
 	}
 
-	private void playNextVideo(int position) {
+	private void playNextVideo(int position, boolean clicked) {
 		Cursor cursor = (Cursor) thumbnailList.getItemAtPosition(position);
 		if (cursor != null) {
 			long id = cursor.getLong(cursor
 					.getColumnIndexOrThrow(MediaStore.Video.Media._ID));
 			Uri movieUri = ContentUris.withAppendedId(CONTENT_URI, id);
 			videoView.setVideoURI(movieUri);
+			if (clicked) {
+				insertLog(movieUri, clicked);
+			}
 		}
+	}
+
+	private void insertLog(Uri uri, boolean clicked) {
+		ContentValues values = new ContentValues();
+		values.put("uri", uri.toString());
+		values.put("clicked", clicked);
+		getContentResolver().insert(
+				Uri.parse("content://info.movsign.movieplayer.touchcountprovider"),
+				values);
 	}
 
 	private LoaderCallbacks<Cursor> loaderCallbacks = new LoaderCallbacks<Cursor>() {
