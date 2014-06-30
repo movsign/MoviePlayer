@@ -11,7 +11,7 @@ deploy:
   provider: releases
   api_key:
     secure: bc1VuxnFDgMe4Zgsq6NT+3hhxr+g3TeF3DgJ6SumJwIRQ1YYyWKp8C/G7KE0yEtpmFkbXFSnDCv+TsgHCyYrEobst3aGzf4ld+7bczB05ETphkXz7AIzBMQe34pW0UytTSqleYBPL/7mzl7g964/KpaHOA6e20v6Mz+xfc35rY0=
-  file: bin/PosterPlayer-release.apk
+  file: bin/MoviePlayer-release.apk
   skip_cleanup: true
   on:
     repo: movsign/MoviePlayer
