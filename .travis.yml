@@ -1,0 +1,22 @@
+language: android
+before_install:
+- rm -f local.properties
+- "$ANDROID_HOME/tools/android update project --path ./ -n MoviePlayer -t android-17
+  -s"
+- openssl aes-256-cbc -k "$ENCKEY" -in signkit.tgz.enc -d -a -out signkit.tgz
+- tar xzf signkit.tgz
+script:
+- ant release -propertyfile $(pwd)/monami-ya-android.properties
+deploy:
+  provider: releases
+  api_key:
+    secure: bc1VuxnFDgMe4Zgsq6NT+3hhxr+g3TeF3DgJ6SumJwIRQ1YYyWKp8C/G7KE0yEtpmFkbXFSnDCv+TsgHCyYrEobst3aGzf4ld+7bczB05ETphkXz7AIzBMQe34pW0UytTSqleYBPL/7mzl7g964/KpaHOA6e20v6Mz+xfc35rY0=
+  file: bin/PosterPlayer-release.apk
+  skip_cleanup: true
+  on:
+    repo: movsign/PosterPlayer
+    tags: true
+    all_branches: true
+env:
+  global:
+    secure: PiSRd5wP0xrnw4KfhiBKjJcX9S3h883mIbbiHw6WehgzhZp1p6YQ29FZYjkER6fm6XwcSnreq51/eJ4MiDOmyhS8QikFg+sqGCN/uc0bXF7Z4d/z+arXeY1719uQ7AEkaX3M2gCuTn+6GjlbSAFCk0oi7oW/iyO/pq3gS3xF3PY=
